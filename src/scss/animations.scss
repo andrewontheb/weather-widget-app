@@ -1,0 +1,186 @@
+@keyframes fallingSnow {
+  0% {
+    opacity: 1;
+
+    transform: translate(0, 0px) rotateZ(0deg);
+  }
+  75% {
+    opacity: 1;
+
+    transform: translate(100px, 600px) rotateZ(270deg);
+  }
+  100% {
+    opacity: 0;
+
+    transform: translate(150px, 800px) rotateZ(360deg);
+  }
+}
+
+@keyframes slide {
+  0%, 90% {
+  }
+  90%, 100% {
+    transform:translateX(-200%);
+  }
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes float {
+  0% {
+    box-shadow: 0 5px 15px 0 rgba(0,0,0,0.6);
+    transform: translateX(0%) translateY(0%);
+  }
+  50% {
+    box-shadow: 0 15px 15px 0 rgba(0,0,0,0.2);
+    transform: translateX(0%) translateY(-5%);
+  }
+  100% {
+    box-shadow: 0 5px 15px 0 rgba(0,0,0,0.6);
+    transform: translateX(0%) translateY(0%);
+  }
+}
+
+@keyframes saturate {
+  from {
+    filter: contrast(100%) saturate(100%);
+  }
+  50% {
+    filter: contrast(250%) saturate(500%);
+  }
+  to {
+    filter: contrast(100%) saturate(100%);
+  }
+
+}
+
+@keyframes img-blur {
+  from {
+    filter: blur(0px);
+  }
+  50% {
+    filter: blur(5px);
+  }
+  to {
+    filter: blur(0px);
+  }
+}
+
+@keyframes sunny {
+  0% {
+    box-shadow: rgba(255, 255, 0, 0.2) 0 0 0 15px, rgba(255, 255, 0, 0.2) 0 0 0 8px, rgba(255, 255, 0, 0.2) 0 0 0 20px;
+    //transform: rotate(0deg);
+  }
+  50% {
+    box-shadow: rgba(255, 255, 0, 0.2) 0 0 0 2px, rgba(255, 255, 0, 0.2) 0 0 0 24px, rgba(255, 255, 0, 0.2) 0 0 0 9px;
+    //transform: rotate(360deg);
+  }
+  100% {
+    box-shadow: rgba(255, 255, 0, 0.2) 0 0 0 15px, rgba(255, 255, 0, 0.2) 0 0 0 8px, rgba(255, 255, 0, 0.2) 0 0 0 20px;
+    //transform: rotate(360deg);
+  }
+}
+
+@keyframes rainy {
+  50% { transform: translateY(-20px); }
+}
+@keyframes rainy_shadow {
+  50% { transform: translateY(20px) scale(.7); opacity: 0.05; }
+}
+@keyframes rainy_rain {
+  0% {
+    box-shadow:
+            rgba(0,0,0,0) 30px 30px,
+            rgba(0,0,0,0) 40px 40px,
+            #000 50px 75px,
+            #000 55px 50px,
+            #000 70px 100px,
+            #000 80px 95px,
+            #000 110px 45px,
+            #000 90px 35px;
+  }
+  25% {
+    box-shadow:
+            #000 30px 45px,
+            #000 40px 60px,
+            #000 50px 90px,
+            #000 55px 65px,
+            rgba(0,0,0,0) 70px 120px,
+            rgba(0,0,0,0) 80px 120px,
+            #000 110px 70px,
+            #000 90px 60px;
+  }
+  26% {
+    box-shadow:
+            #000 30px 45px,
+            #000 40px 60px,
+            #000 50px 90px,
+            #000 55px 65px,
+            rgba(0,0,0,0) 70px 40px,
+            rgba(0,0,0,0) 80px 20px,
+            #000 110px 70px,
+            #000 90px 60px;
+  }
+  50% {
+    box-shadow:
+            #000 30px 70px,
+            #000 40px 80px,
+            rgba(0,0,0,0) 50px 100px,
+            #000 55px 80px,
+            #000 70px 60px,
+            #000 80px 45px,
+            #000 110px 95px,
+            #000 90px 85px;
+  }
+  51% {
+    box-shadow:
+            #000 30px 70px,
+            #000 40px 80px,
+            rgba(0,0,0,0) 50px 45px,
+            #000 55px 80px,
+            #000 70px 60px,
+            #000 80px 45px,
+            #000 110px 95px,
+            #000 90px 85px;
+  }
+  75% {
+    box-shadow:
+            #000 30px 95px,
+            #000 40px 100px,
+            #000 50px 60px,
+            rgba(0,0,0,0) 55px 95px,
+            #000 70px 80px,
+            #000 80px 70px,
+            rgba(0,0,0,0) 110px 120px,
+            rgba(0,0,0,0) 90px 110px;
+  }
+  76% {
+    box-shadow:
+            #000 30px 95px,
+            #000 40px 100px,
+            #000 50px 60px,
+            rgba(0,0,0,0) 55px 35px,
+            #000 70px 80px,
+            #000 80px 70px,
+            rgba(0,0,0,0) 110px 25px,
+            rgba(0,0,0,0) 90px 15px;
+  }
+  100% {
+    box-shadow:
+            rgba(0,0,0,0) 30px 120px,
+            rgba(0,0,0,0) 40px 120px,
+            #000 50px 75px,
+            #000 55px 50px,
+            #000 70px 100px,
+            #000 80px 95px,
+            #000 110px 45px,
+            #000 90px 35px;
+  }
+}
