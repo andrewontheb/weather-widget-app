@@ -82,7 +82,7 @@ export const App: React.FC = () => {
                               })) : ''
                               }
                           </div>
-                          <div className="info">
+                          <div className="location">
                               <div className="location__city">{location.city}</div>
                               <p className="location__date">{location.date}</p>
                               <p className="location__temp"><span>{scale ? (location.temp > 0 ? '+' + location.temp + '°C' : location.temp + '°C') : (((location.temp * 9 / 5) + 32).toFixed(2) + '°F')}</span></p>

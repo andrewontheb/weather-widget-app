@@ -3,14 +3,264 @@
 @import "~slick-carousel/slick/slick-theme.css";
 
 $lime: #88D5C9;
-$peach: #FF9679;
-$primary-green: #09d3ac;
-$header-bg: #282c34;
-$fail-color: #e74444;
-$border: 1px solid #d4dcec;
-
 $font-size: 16px;
 $primary-font-size: calc(10px + 2vmin);
+$btn-green: #13af72;
+
+.App {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-flow: column nowrap;
+  width: 100%;
+  height: 100vh;
+  font-size: $primary-font-size;
+  box-shadow: #d8d9db 0px -4px 4px 0px;
+  background: rgb(56,230,190);
+  background: linear-gradient(-90deg, #5dd6ec 10%, #fa986e 60%, #dc425c 95%);
+  .App-header {
+    background-color: transparent;
+    height: 15vh;
+    width: 100%;
+    padding: 0 35px 0 20px;
+    display: flex;
+    align-items: center;
+    flex-flow: row-reverse;
+    justify-content: space-between;
+    font-size: calc(10px + 2vmin);
+    color: white;
+    .App-logo {
+      height: 10vmin;
+      pointer-events: none;
+      width: auto;
+      animation: logo-spin infinite 20s linear;
+    }
+  }
+  .App-main {
+    display: flex;
+    width: 100%;
+    height: 65vh;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    .location {
+      position: relative;
+      z-index: 1;
+      &__temp {
+        span {
+          font-size: calc(30px + 7vmin);
+          color: white;
+        }
+      }
+      &__city {
+        font-size: calc(30px + 3vmin);
+      }
+      &__time {
+        position: absolute;
+        top: -20%;
+        right: -5px;
+      }
+      &__weather {
+        min-width: calc(100% / 3 - 10px);
+        max-width: 445px;
+        margin: 20px 0;
+        background: rgba(0, 0, 0, 0.3) linear-gradient(180deg, #38a8e6 0%, #13af72 100%);
+        overflow: hidden;
+        position: relative;
+        text-align: center;
+        padding: 17px;
+        border-radius: 7px;
+        color: white;
+        text-shadow: -6px 1px 5px #434343;
+        cursor: pointer;
+        animation: float 5s ease infinite;
+        &:nth-child(2n) {
+          animation-delay: 0.5s;
+        }
+        &:nth-child(3n) {
+          animation-delay: 0.25s;
+        }
+        &:after {
+          content:'';
+          top:0;
+          transform:translateX(100%);
+          width:100%;
+          height:100%;
+          position: absolute;
+          z-index:1;
+          animation: slide 10s infinite;
+          background: -webkit-gradient(linear, left top, right top,
+                  color-stop(0%,rgba(255,255,255,0)),
+                  color-stop(50%,rgba(255,255,255,0.8)),
+                  color-stop(99%,rgba(128,186,232,0)));
+        }
+        &:before {
+          content:'';
+          display: flex;
+          z-index: 0;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          position: absolute;
+          width: 100%;
+          opacity: 0.35;
+          background: url("../moscow.jpg") center center no-repeat;
+          filter: blur(0.5px);
+          background-size: cover;
+        }
+
+        &.rain {
+          background: rgb(56,168,230);
+          background: linear-gradient(184deg, #38a8e6 0%, #0d0c0e 100%);
+          &:before {
+            background:  url("../London.jpg") center center no-repeat;
+            animation: img-blur 5s ease-in-out infinite;
+          }
+          &:after {
+            animation: none;
+          }
+        }
+        &.snow {
+          background: rgba(241, 103, 103, 1) linear-gradient(180deg, #38a8e6 0%, #d3d5ff 100%);
+          &:before {
+            filter: contrast(100%) saturate(100%);
+            background:  url("../Nsk.jpg") 50% 50% no-repeat;
+            animation: saturate 5s ease-in-out infinite;
+          }
+          &:after {
+            animation: none;
+          }
+        }
+        .sun {
+          background: linear-gradient(top, rgba(255,255,255,0) 0%, rgba(255,255,255,0.8) 50%, rgba(255,255,255,0) 100%);
+          height: 140px;
+          width: 20px;
+          margin-left: -15px;
+          position: absolute;
+          left: 90px;
+          top: 20px;
+          z-index: 0;
+          &:before {
+            background: linear-gradient(top, rgba(255,255,255,0) 0%, rgba(255,255,255,0.8) 50%, rgba(255,255,255,0) 100%);
+            content: '';
+            height: 140px;
+            width: 20px;
+            opacity: 1;
+            position: absolute;
+            bottom: 0px;
+            left: 0px;
+            transform: rotate(90deg);
+          }
+          &:after {
+            animation: sunny 6s linear infinite;
+            background: #FFEE44;
+            border-radius: 50%;
+            box-shadow: rgba(255, 255, 0, 0.2) 0 0 0 15px, rgba(255, 255, 0, 0.2) 0 0 0 8px, rgba(255, 255, 0, 0.2) 0 0 0 20px;
+            content: '';
+            height: 80px;
+            width: 80px;
+            position: absolute;
+            left: -30px;
+            top: 30px;
+          }
+        }
+
+        .rain {
+          animation: rainy 5s ease-in-out infinite 1s;
+          background: #CCCCCC;
+          border-radius: 50%;
+          box-shadow:
+                  #CCCCCC 65px -15px 0 -5px,
+                  #CCCCCC 25px -25px,
+                  #CCCCCC 30px 10px,
+                  #CCCCCC 60px 15px 0 -10px,
+                  #CCCCCC 85px 5px 0 -5px;
+          display: block;
+          height: 50px;
+          width: 50px;
+          margin-left: -60px;
+          position: absolute;
+          left: 100px;
+          top: 70px;
+          z-index: 0;
+        }
+        .rain:before {
+          animation: rainy_rain .7s infinite linear;
+          content: '';
+          background: #CCCCCC;
+          border-radius: 50%;
+          display: block;
+          height: 6px;
+          width: 3px;
+          opacity: 0.3;
+          transform: scale(.9);
+        }
+
+        .snow {
+          text-align: center;
+          span {
+            position: absolute;
+            display: inline-block;
+            width: 20px;
+            height: 21px;
+            margin: -280px 60px 54px  -34px;
+            background:url("../snowflake.png");
+            z-index: 0;
+            animation: fallingSnow 12s infinite  cubic-bezier(0.35,0.45,0.39,0.29);
+            &:nth-child(5n+5) {
+              left: 5px;
+              animation-delay: 0.3s;
+            }
+            &:nth-child(3n+2) {
+              left: 15px;
+              animation-delay: 1.5s;
+            }
+            &:nth-child(2n+5) {
+              left: 25px;
+              animation-delay: 1.7s;
+            }
+
+            &:nth-child(3n+10) {
+              right: 5px;
+              animation-delay: 2.7s;
+            }
+            &:nth-child(7n+2) {
+              right: 15px;
+              animation-delay: 3.5s;
+            }
+            &:nth-child(4n+5) {
+              right: 25px;
+              animation-delay: 5.5s;
+            }
+            &:nth-child(3n+7) {
+              right: 50%;
+              animation-delay: 8s;
+            }
+          }
+        }
+      }
+      p {
+        margin: 0;
+        color: white;
+      }
+    }
+
+    .location__weather {
+
+    }
+  }
+  .App-footer {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    height: 20vh;
+    background: transparent;
+    font-size: $font-size;
+    color: #282c34;
+    text-align: center;
+  }
+}
 
 .slick-slider {
   width: 100%;
@@ -71,267 +321,6 @@ $primary-font-size: calc(10px + 2vmin);
   z-index: 11;
 }
 
-.App {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-flow: column nowrap;
-  width: 100%;
-  //max-width: 680px;
-  height: calc(100vh - 40px);
-  vertical-align: middle;
-  margin: 20px auto;
-  font-size: $primary-font-size;
-  box-shadow: #d8d9db 0px -4px 4px 0px;
-  background: rgb(56,230,190);
-  background: linear-gradient(4deg, rgba(56,230,190,1) 40%, rgba(134,52,206,1) 100%, rgba(220,66,92,1) 100%);
-  .App-header {
-    background-color: transparent;
-    height: 15vh;
-    width: 100%;
-    padding: 0 35px 0 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-size: calc(10px + 2vmin);
-    color: white;
-    .App-logo {
-      height: 10vmin;
-      pointer-events: none;
-      width: auto;
-      animation: logo-spin infinite 20s linear;
-    }
-  }
-  .App-main {
-    display: flex;
-    width: 100%;
-    height: 65vh;
-    flex-flow: row wrap;
-    justify-content: space-evenly;
-    align-items: center;
-    .location__temp {
-      span {
-        font-size: calc(30px + 7vmin);
-        color: white;
-      }
-    }
-    .location__date {
-      color: white;
-    }
-    .location__city {
-      font-size: calc(30px + 3vmin);
-      color: white;
-    }
-    .location__time {
-      position: absolute;
-      top: -50px;
-      right: -5px;
-    }
-
-    .location__weather {
-      min-width: calc(100% / 3 - 10px);
-      max-width: 445px;
-      margin: 20px 0;
-      background: rgba(0, 0, 0, 0.3) linear-gradient(180deg, #38a8e6 0%, #13af72 100%);
-      overflow: hidden;
-      position: relative;
-      text-align: center;
-      padding: 17px;
-      border-radius: 7px;
-      color: white;
-      text-shadow: -6px 1px 5px #434343;
-      cursor: pointer;
-      animation: float 5s ease infinite;
-      &:nth-child(2n) {
-        animation-delay: 0.5s;
-      }
-      &:nth-child(3n) {
-        animation-delay: 0.25s;
-      }
-      &:after {
-        content:'';
-        top:0;
-        transform:translateX(100%);
-        width:100%;
-        height:100%;
-        position: absolute;
-        z-index:1;
-        animation: slide 10s infinite;
-        background: -webkit-gradient(linear, left top, right top,
-                color-stop(0%,rgba(255,255,255,0)),
-                color-stop(50%,rgba(255,255,255,0.8)),
-                color-stop(99%,rgba(128,186,232,0)));
-      }
-      &:before {
-        content:'';
-        display: flex;
-        z-index: 0;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        position: absolute;
-        padding-bottom: 100%;
-        width: 100%;
-        opacity: 0.35;
-        background: url("../moscow.jpg") center center no-repeat;
-        filter: blur(0.5px);
-        background-size: cover;
-      }
-      .info {
-        position: relative;
-        z-index: 1;
-      }
-      p {
-        margin: 0;
-      }
-
-      &.rain {
-        //top: 80%;
-        background: rgb(56,168,230);
-        background: linear-gradient(184deg, #38a8e6 0%, #0d0c0e 100%);
-        &:before {
-          background:  url("../London.jpg") center center no-repeat;
-          animation: img-blur 5s ease-in-out infinite;
-        }
-        &:after {
-          animation: none;
-        }
-      }
-      &.snow {
-        background: rgba(241, 103, 103, 1) linear-gradient(180deg, #38a8e6 0%, #d3d5ff 100%);
-        &:before {
-          filter: contrast(100%) saturate(100%);
-          background:  url("../Nsk.jpg") 50% 50% no-repeat;
-          animation: saturate 5s ease-in-out infinite;
-        }
-        &:after {
-          animation: none;
-        }
-      }
-      .sun {
-        background: linear-gradient(top, rgba(255,255,255,0) 0%, rgba(255,255,255,0.8) 50%, rgba(255,255,255,0) 100%);
-        height: 140px;
-        width: 20px;
-        margin-left: -15px;
-        position: absolute;
-        left: 90px;
-        top: 20px;
-        z-index: 0;
-        &:before {
-          background: linear-gradient(top, rgba(255,255,255,0) 0%, rgba(255,255,255,0.8) 50%, rgba(255,255,255,0) 100%);
-          content: '';
-          height: 140px;
-          width: 20px;
-          opacity: 1;
-          position: absolute;
-          bottom: 0px;
-          left: 0px;
-          transform: rotate(90deg);
-        }
-        &:after {
-          animation: sunny 6s linear infinite;
-          background: #FFEE44;
-          border-radius: 50%;
-          box-shadow: rgba(255, 255, 0, 0.2) 0 0 0 15px, rgba(255, 255, 0, 0.2) 0 0 0 8px, rgba(255, 255, 0, 0.2) 0 0 0 20px;
-          content: '';
-          height: 80px;
-          width: 80px;
-          position: absolute;
-          left: -30px;
-          top: 30px;
-        }
-      }
-
-      .rain {
-        animation: rainy 5s ease-in-out infinite 1s;
-        background: #CCCCCC;
-        border-radius: 50%;
-        box-shadow:
-                #CCCCCC 65px -15px 0 -5px,
-                #CCCCCC 25px -25px,
-                #CCCCCC 30px 10px,
-                #CCCCCC 60px 15px 0 -10px,
-                #CCCCCC 85px 5px 0 -5px;
-        display: block;
-        height: 50px;
-        width: 50px;
-        margin-left: -60px;
-        position: absolute;
-        left: 100px;
-        top: 70px;
-        z-index: 0;
-      }
-      .rain:before {
-        animation: rainy_rain .7s infinite linear;
-        content: '';
-        background: #CCCCCC;
-        border-radius: 50%;
-        display: block;
-        height: 6px;
-        width: 3px;
-        opacity: 0.3;
-        transform: scale(.9);
-      }
-
-      .snow {
-        text-align: center;
-        span {
-          position: absolute;
-          display: inline-block;
-          width: 20px;
-          height: 21px;
-          margin: -280px 60px 54px  -34px;
-          background:url("../snowflake.png");
-          z-index: 0;
-          animation: fallingSnow 12s infinite  cubic-bezier(0.35,0.45,0.39,0.29);
-          &:nth-child(5n+5) {
-            left: 5px;
-            animation-delay: 0.3s;
-          }
-          &:nth-child(3n+2) {
-            left: 15px;
-            animation-delay: 1.5s;
-          }
-          &:nth-child(2n+5) {
-            left: 25px;
-            animation-delay: 1.7s;
-          }
-
-          &:nth-child(3n+10) {
-            right: 5px;
-            animation-delay: 2.7s;
-          }
-          &:nth-child(7n+2) {
-            right: 15px;
-            animation-delay: 3.5s;
-          }
-          &:nth-child(4n+5) {
-            right: 25px;
-            animation-delay: 5.5s;
-          }
-          &:nth-child(3n+7) {
-            right: 50%;
-            animation-delay: 8s;
-          }
-        }
-      }
-    }
-  }
-  .App-footer {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    width: 100%;
-    height: 20vh;
-    background: transparent;
-    font-size: $font-size;
-    color: #282c34;
-    text-align: center;
-  }
-}
-
-
-
 .btn {
   padding: 11px 16.5px;
   line-height: normal;
@@ -350,8 +339,7 @@ $primary-font-size: calc(10px + 2vmin);
   background: #7a4ecb;
   &--lime {
     border: none;
-    //background-color: $lime;
-    background: #7a4ecb;
+    background: $btn-green;
     color: white;
     letter-spacing: 0.1em;
     line-height: normal;
